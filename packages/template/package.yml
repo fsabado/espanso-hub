@@ -1,0 +1,62 @@
+# Accented Words
+
+matches:
+  - trigger: "hello"
+    replace: "world"
+  
+  # Multiline
+  - trigger: "hello"
+    replace: "line1\nline2"
+
+  # Blocks
+  - trigger: "include newlines"
+    # Add labels for better search
+    label: "Makes search easier"
+    replace: |
+              exactly as you see
+              will appear these three
+              lines of poetry
+
+  - trigger: ":now"
+    replace: "It's {{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%H:%M"
+
+  # Create words
+  - trigger: "Champs-Elysees"
+    replace: "Champs-Élysées"
+    # Allows case propagation (ignore case)
+    propagate_case: true 
+    # Triggers word match
+    word: true
+
+  - trigger: ":div"
+    # Cursor hints, use $|$. Limit 1 per match
+    replace: "<div>$|$</div>"
+
+  # Multiple triggers
+  - triggers: ["hello", "hi"]
+    replace: "world"
+
+  # Image match
+  - trigger: ":cat"
+    image_path: "/path/to/image.png"
+
+  # Paths
+  - trigger: ":cat"
+    image_path: "$CONFIG/images/cat.png"
+
+  # Nested matches
+  - trigger: ":one"
+    replace: "nested"
+
+  - trigger: ":nested"
+    replace: "This is a {{output}} match"
+    vars:
+      - name: output
+        type: match
+        params:
+          trigger: ":one"

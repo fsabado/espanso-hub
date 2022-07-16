@@ -1,0 +1,7 @@
+name: <name>
+title: Title of the package
+description: Automatically accent commonly accented words and proper nouns in English.
+version: 1.0.0
+author: Francis
+homepage: "https://github.com/fsabado"
+tags: ["english", "languages", "accents"]
