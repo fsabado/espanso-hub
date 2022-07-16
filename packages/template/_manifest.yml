@@ -1,4 +1,4 @@
-name: <name>
+name: template
 title: Title of the package
 description: Automatically accent commonly accented words and proper nouns in English.
 version: 1.0.0
